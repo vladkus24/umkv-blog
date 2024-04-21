@@ -21,3 +21,18 @@ class TaskManagerApp:
         self.due_date_var = tk.StringVar()
 
         self.create_widgets()
+
+ def add_task(self):
+        name = self.task_name_var.get()
+        priority = self.priority_var.get()
+        due_date = self.due_date_var.get()
+
+        if name and priority and due_date:
+            task = Task(name, priority, due_date)
+            self.tasks.append(task)
+
+            self.task_list_treeview.insert("", tk.END, text=task.name, values=(task.priority, task.due_date))
+
+            self.task_name_var.set("")
+            self.priority_var.set("")
+            self.due_date_var.set("")
