@@ -34,6 +34,11 @@ class TaskManagerApp:
         priority_dropdown = ttk.Combobox(self.root, textvariable=self.priority_var, values=priority_values)
         priority_dropdown.grid(row=1, column=1, padx=10, pady=5, sticky="w")
 
+        # Due Date Label and Calendar
+        tk.Label(self.root, text="Термін:").grid(row=2, column=0, sticky="e")
+        due_date_entry = DateEntry(self.root, textvariable=self.due_date_var, date_pattern="dd-mm-yyyy")
+        due_date_entry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
+
     def add_task(self):
         name = self.task_name_var.get()
         priority = self.priority_var.get()
