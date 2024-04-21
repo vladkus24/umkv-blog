@@ -15,3 +15,9 @@ class TaskManagerApp:
         self.root.title("Планувальник")
 
         self.tasks = []
+
+        self.task_name_var = tk.StringVar()
+        self.priority_var = tk.StringVar()
+        self.due_date_var = tk.StringVar()
+
+        self.create_widgets()
