@@ -36,3 +36,7 @@ class TaskManagerApp:
             self.task_name_var.set("")
             self.priority_var.set("")
             self.due_date_var.set("")
+                    else:
+            messagebox.showerror("Помилка", "Будь ласка, заповніть всі поля.")
+
+
