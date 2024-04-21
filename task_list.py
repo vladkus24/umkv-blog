@@ -22,7 +22,19 @@ class TaskManagerApp:
 
         self.create_widgets()
 
- def add_task(self):
+    def create_widgets(self):
+        # Task Name Label and Entry
+        tk.Label(self.root, text="Назва завдання:").grid(row=0, column=0, sticky="e")
+        task_name_entry = tk.Entry(self.root, textvariable=self.task_name_var)
+        task_name_entry.grid(row=0, column=1, padx=10, pady=5, sticky="w")
+
+        # Priority Label and Dropdown
+        tk.Label(self.root, text="Пріорітет:").grid(row=1, column=0, sticky="e")
+        priority_values = ["Без пріорітету", "Низький", "Середній", "Високий"]
+        priority_dropdown = ttk.Combobox(self.root, textvariable=self.priority_var, values=priority_values)
+        priority_dropdown.grid(row=1, column=1, padx=10, pady=5, sticky="w")
+
+    def add_task(self):
         name = self.task_name_var.get()
         priority = self.priority_var.get()
         due_date = self.due_date_var.get()
@@ -36,7 +48,11 @@ class TaskManagerApp:
             self.task_name_var.set("")
             self.priority_var.set("")
             self.due_date_var.set("")
-                    else:
+        else:
             messagebox.showerror("Помилка", "Будь ласка, заповніть всі поля.")
 
 
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = TaskManagerApp(root)
+    root.mainloop()
