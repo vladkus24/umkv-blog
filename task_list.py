@@ -39,6 +39,15 @@ class TaskManagerApp:
         due_date_entry = DateEntry(self.root, textvariable=self.due_date_var, date_pattern="dd-mm-yyyy")
         due_date_entry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
+        # Кнопка додавання завдань
+        add_task_button = tk.Button(self.root, text="Додати завдання", command=self.add_task)
+        add_task_button.grid(row=3, column=0, columnspan=2, padx=10, pady=5)
+
+        # Кнопка видаленя завдань
+        delete_task_button = tk.Button(self.root, text="Видалити завдання", command=self.delete_task)
+        delete_task_button.grid(row=5, column=0, padx=10, pady=5, sticky="w")
+
+
         # Поле з завданнями
         self.task_list_treeview = ttk.Treeview(self.root, columns=("Пріорітет", "Термін"))
         self.task_list_treeview.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
