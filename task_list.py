@@ -39,6 +39,14 @@ class TaskManagerApp:
         due_date_entry = DateEntry(self.root, textvariable=self.due_date_var, date_pattern="dd-mm-yyyy")
         due_date_entry.grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
+        # Поле з завданнями
+        self.task_list_treeview = ttk.Treeview(self.root, columns=("Пріорітет", "Термін"))
+        self.task_list_treeview.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
+        self.task_list_treeview.heading("#0", text="Назва завдання")
+        self.task_list_treeview.heading("Пріорітет", text="Пріорітет")
+        self.task_list_treeview.heading("Термін", text="Термін")
+
+
         
 
     def add_task(self):
@@ -58,6 +66,15 @@ class TaskManagerApp:
         else:
             messagebox.showerror("Помилка", "Будь ласка, заповніть всі поля.")
 
+    def delete_task(self):
+        selected_item = self.task_list_treeview.selection()
+        if selected_item:
+            task_name = self.task_list_treeview.item(selected_item)["text"]
+            for task in self.tasks:
+                if task.name == task_name:
+                    self.tasks.remove(task)
+                    self.task_list_treeview.delete(selected_item)
+                    break
 
 if __name__ == "__main__":
     root = tk.Tk()

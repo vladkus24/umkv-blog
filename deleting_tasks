@@ -1,9 +1,0 @@
-def delete_task(self):
-        selected_item = self.task_list_treeview.selection()
-        if selected_item:
-            task_name = self.task_list_treeview.item(selected_item)["text"]
-            for task in self.tasks:
-                if task.name == task_name:
-                    self.tasks.remove(task)
-                    self.task_list_treeview.delete(selected_item)
-                    break
