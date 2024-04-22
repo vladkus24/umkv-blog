@@ -47,16 +47,13 @@ class TaskManagerApp:
         delete_task_button = tk.Button(self.root, text="Видалити завдання", command=self.delete_task)
         delete_task_button.grid(row=5, column=0, padx=10, pady=5, sticky="w")
 
-
         # Поле з завданнями
         self.task_list_treeview = ttk.Treeview(self.root, columns=("Пріорітет", "Термін"))
         self.task_list_treeview.grid(row=4, column=0, columnspan=2, padx=10, pady=5)
         self.task_list_treeview.heading("#0", text="Назва завдання")
         self.task_list_treeview.heading("Пріорітет", text="Пріорітет")
         self.task_list_treeview.heading("Термін", text="Термін")
-
-
-        
+   
 
     def add_task(self):
         name = self.task_name_var.get()
